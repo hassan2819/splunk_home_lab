@@ -22,7 +22,6 @@ A hands-on defensive security lab that forwards Ubuntu SSH authentication logs t
 Created the Ubuntu VM, configured networking, and tested SSH connectivity to the lab host.
 
 ![Ubuntu VM setup](screenshots/01-ubuntu-vm-setup.png)
-![SSH connectivity test](screenshots/02-ubuntu-network-ssh.png)
 
 ### 2. Install and configure the Universal Forwarder
 Installed Splunk Universal Forwarder and configured it to monitor `/var/log/auth.log` and send events to Splunk Enterprise on port `9997`.

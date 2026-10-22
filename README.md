@@ -74,17 +74,11 @@ index=linux "Failed password"
 ![Alert trigger history](screenshots/09-alert-trigger-history.png)
 
 ### 6. Build the dashboard
-Created a three-panel dashboard for Top Attacker IPs, Failed Logins Over Time, and Failed vs Successful Logins. The last octet of displayed IPs is masked.
-
-
+Created a three-panel dashboard for Top Attacker IPs, Failed Logins Over Time, and Failed vs Successful Logins.
+![Dashbard](screenshots/ad1e2434-a194-4d70-aeec-55a9f9a461c4.png)
 
 ### 7. Map the detection
 Mapped repeated password-guessing behavior to **MITRE ATT&CK T1110 — Brute Force**.
 
-## Privacy
-
-The screenshots are restored from the project document. Only the final octet of visible private IP addresses is masked; browser tabs/address bars and the Word toolbar are cropped where present. No broad black overlays are used.
-
 ## Scope
-
 All login attempts were generated in an isolated lab for defensive detection testing.

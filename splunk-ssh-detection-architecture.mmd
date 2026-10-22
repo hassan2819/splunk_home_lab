@@ -1,0 +1,37 @@
+flowchart TB
+    TITLE[SSH Log Analysis and Brute-Force Detection with Splunk]
+
+    subgraph SOURCE[Log Source - VirtualBox]
+      direction TB
+      VM[Ubuntu VM - Bridged Networking]
+      SSH[SSH Service]
+      LOG[Authentication Log - auth.log]
+      UF[Splunk Universal Forwarder]
+      VM --> SSH --> LOG --> UF
+    end
+
+    subgraph SIEM[Splunk Enterprise - Windows PC]
+      direction TB
+      RECV[Receiving Port 9997]
+      IDX[(linux index)]
+      SEARCH[SPL Detection Searches<br/>Attacker IP · Failed Login Trends<br/>Failed vs Successful Ratio]
+      ALERT[Alert<br/>3 or more failed logins<br/>within 5 minutes]
+      DASH[3-Panel Dashboard<br/>Top Attacker IPs<br/>Failed Logins Over Time<br/>Failed vs Successful]
+      MITRE[MITRE ATT&CK<br/>T1110 - Brute Force]
+      RECV --> IDX --> SEARCH
+      SEARCH --> ALERT
+      SEARCH --> DASH
+      SEARCH --> MITRE
+    end
+
+    TITLE --> VM
+    UF -->|Forward SSH authentication events| RECV
+
+    classDef title fill:#14243a,stroke:#14243a,color:#ffffff,stroke-width:2px;
+    classDef source fill:#e8f1ff,stroke:#3772c2,color:#12345a,stroke-width:1.5px;
+    classDef siem fill:#fff4e5,stroke:#df7c00,color:#53300a,stroke-width:1.5px;
+    classDef mitre fill:#f3e9ff,stroke:#8247b5,color:#351553,stroke-width:1.5px;
+    class TITLE title;
+    class VM,SSH,LOG,UF source;
+    class RECV,IDX,SEARCH,ALERT,DASH siem;
+    class MITRE mitre;

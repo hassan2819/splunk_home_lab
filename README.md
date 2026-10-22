@@ -19,7 +19,7 @@ A hands-on defensive security lab that forwards Ubuntu SSH authentication logs t
 ## Project Steps and Evidence
 
 ### 1. Set up the Ubuntu VM and verify SSH connectivity
-Created the Ubuntu VM, configured networking, and tested SSH connectivity to the lab host. The screenshot is cropped to the terminal; only the final IP octet is masked.
+Created the Ubuntu VM, configured networking, and tested SSH connectivity to the lab host.
 
 ![Ubuntu VM setup](screenshots/01-ubuntu-vm-setup.png)
 ![SSH connectivity test](screenshots/02-ubuntu-network-ssh.png)
@@ -27,17 +27,11 @@ Created the Ubuntu VM, configured networking, and tested SSH connectivity to the
 ### 2. Install and configure the Universal Forwarder
 Installed Splunk Universal Forwarder and configured it to monitor `/var/log/auth.log` and send events to Splunk Enterprise on port `9997`.
 
-![Universal Forwarder installation](screenshots/03-universal-forwarder-install.png)
-![Forwarder service and forwarding status](screenshots/04-forwarder-service-running.png)
-![Forwarder output and receiver connectivity](screenshots/05-forwarder-output-configuration.png)
-
 ### 3. Generate failed SSH authentication events
-Generated failed SSH password attempts in the isolated lab to create detection test data. The evidence shows the failed-password events; only the source IP's last octet is masked.
-
-![Failed SSH login test](screenshots/06-simulated-failed-ssh-logins.png)
+Generated failed SSH password attempts in the isolated lab to create detection test data.
 
 ### 4. Search and analyze SSH logs with SPL
-Used Splunk searches to identify source IPs, review failed-login patterns over time, and compare failed and successful logins. Adjust fields and sourcetype to match your event format.
+Used Splunk searches to identify source IPs, review failed-login patterns over time, and compare failed and successful logins.
 
 **Failed attempts by source IP**
 
@@ -82,7 +76,7 @@ index=linux "Failed password"
 ### 6. Build the dashboard
 Created a three-panel dashboard for Top Attacker IPs, Failed Logins Over Time, and Failed vs Successful Logins. The last octet of displayed IPs is masked.
 
-![Three-panel SSH security dashboard](screenshots/10-three-panel-dashboard.png)
+
 
 ### 7. Map the detection
 Mapped repeated password-guessing behavior to **MITRE ATT&CK T1110 — Brute Force**.
